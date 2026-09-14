@@ -23,7 +23,6 @@ const sections: TourSectionData[] = [
     imageIndexes: [12, 13],
     compact: true,
   },
-
   {
     title: 'Exterior',
     files: [
@@ -34,7 +33,6 @@ const sections: TourSectionData[] = [
     ],
     imageIndexes: [4, 5, 6, 7],
   },
-
   {
     title: 'Living room 2',
     description: 'Sofa · Air conditioning · Ceiling fan · TV',
@@ -46,7 +44,6 @@ const sections: TourSectionData[] = [
     ],
     imageIndexes: [0, 1, 8, 10],
   },
-
   {
     title: 'Bedroom',
     description:
@@ -59,7 +56,6 @@ const sections: TourSectionData[] = [
     ],
     imageIndexes: [3, 14, 3, 14],
   },
-
   {
     title: 'Living room',
     description: 'Sofa · Air conditioning · Ceiling fan · TV',
@@ -71,7 +67,6 @@ const sections: TourSectionData[] = [
     ],
     imageIndexes: [8, 0, 1, 9],
   },
-
   {
     title: 'More photos',
     description: 'Additional photos of the stay',
