@@ -18,9 +18,13 @@ function App() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   useEffect(() => {
-    const syncRoute = () => setPhotoTourOpen(isPhotoTourRoute())
+    const syncRoute = () => {
+      setPhotoTourOpen(isPhotoTourRoute())
+    }
+
     window.addEventListener('popstate', syncRoute)
     window.addEventListener('hashchange', syncRoute)
+
     return () => {
       window.removeEventListener('popstate', syncRoute)
       window.removeEventListener('hashchange', syncRoute)
@@ -29,23 +33,40 @@ function App() {
 
   const openPhotoTour = () => {
     if (!isPhotoTourRoute()) {
-      window.history.pushState({ photoTour: true }, '', '#photo-tour')
+      window.history.pushState(
+        { photoTour: true },
+        '',
+        '#photo-tour'
+      )
     }
+
     setPhotoTourOpen(true)
     window.scrollTo(0, 0)
   }
 
   const closePhotoTour = () => {
-    if (isPhotoTourRoute()) window.history.back()
-    else setPhotoTourOpen(false)
+    if (isPhotoTourRoute()) {
+      window.history.back()
+    } else {
+      setPhotoTourOpen(false)
+    }
   }
 
   if (photoTourOpen) {
     return (
       <>
-        <PhotoTour images={property.images} onClose={closePhotoTour} onOpenImage={setLightboxIndex} />
+        <PhotoTour
+          images={property.images}
+          onClose={closePhotoTour}
+        />
+
         {lightboxIndex !== null && (
-          <Lightbox images={property.images} index={lightboxIndex} onClose={() => setLightboxIndex(null)} onChange={setLightboxIndex} />
+          <Lightbox
+            images={property.images}
+            index={lightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+            onChange={setLightboxIndex}
+          />
         )}
       </>
     )
@@ -54,10 +75,17 @@ function App() {
   return (
     <>
       <Header />
+
       <div id="top" className="page">
         <PropertyHeader property={property} />
-        <PropertyGallery images={property.images} onOpenTour={openPhotoTour} />
+
+        <PropertyGallery
+          images={property.images}
+          onOpenTour={openPhotoTour}
+        />
+
         <SectionNav property={property} />
+
         <PropertyDetails property={property} />
       </div>
     </>
